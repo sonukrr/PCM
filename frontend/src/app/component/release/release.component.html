@@ -1,0 +1,24 @@
+
+<h1>Current Status</h1>
+<div *ngIf="show; else elseBlock">
+
+  <table class="table table-striped table-bordered table-hover thead-dark table-responsive ">
+  
+  <tr >
+        <th>Employee ID</th><th>Employee name</th><th>Employee Location</th>
+        <th>PC Number</th><th>Start date</th>
+        <th>End Date</th><th>release</th>
+    </tr>
+
+<tr >
+<input #id type="hidden" name="empID" value="{{employee.empId}}">
+<td>{{employee.empId}}</td><td>{{employee.empName}}</td><td>{{employee.empLocation}}</td>
+<td>{{employee.pc.pcNo}}</td><td>{{employee.pc.startDate}}</td>
+<td>{{employee.pc.endDate}}</td>
+<td><button (click)=" release()">Release</button></td>
+</tr>
+    
+</table>
+</div>
+
+<ng-template #elseBlock>No PC is alloted</ng-template>

@@ -1,0 +1,27 @@
+
+{{employee|json}}
+<div id="registrationForm">
+    <form #registerform="ngForm">
+      <div class="form-group" >
+          <label for="empSalary">Employee Name</label>
+          <input type="Text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" id="empName" required [(ngModel)]="employee.empName" name="empName">
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched" >name field can't be empty</small>
+        </div>
+      <div class="form-group">
+          <label for="empSalary">Employee Location</label>    
+        <select class="form-control" #loc="ngModel" [class.is-invalid]="loc.invalid && loc.touched" id="empLocation" required [(ngModel)]="employee.empLocation" name="empLocation">
+            <option *ngFor="let loc of locations" [value]="loc.locationId">{{loc.locationName}}</option>
+              </select>
+              <div *ngIf="loc.errors && (loc.touched)"> 
+                  <small class="text-danger">Select your location</small>
+              </div>
+      </div>
+      <div class="form-group">
+          <label for="empSalary">Password</label>
+          <input type="password" #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched" class="form-control" id="password"required [(ngModel)]="employee.password" name="password">
+          <small class="text-danger" [class.d-none]="pass.valid || pass.untouched" >Password is required</small>
+        </div>
+
+      <button type="submit" [disabled]="registerform.invalid" class="btn btn-success" (click)="register()">Register</button>
+    </form>
+</div>
